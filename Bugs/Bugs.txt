@@ -1,0 +1,27 @@
+
+JavaScript Bugs:
+window.onload Overwritten Twice
+The window.onload event is assigned twice, so the first assignment (just displayQuestions(currentPage)) is overwritten by the second one that also calls startTimer(). This causes the first assignment to be useless.
+
+submitQuiz() Score Calculation Could Fail
+In the checkbox answer check, the comparison uses JSON.stringify(selectedValues.sort()) === JSON.stringify(q.answer.sort()). If the user selects the correct options but also an extra wrong option, the check still fails, which is intended but could be confusing to the user.
+
+Wrong Answer for Question 7 (Dropdown) The answer for "What is the largest lake in the world?" is set to 'Baikal', but the Caspian Sea is actually the largest lake. This code declares Baikal as the correct answer, which is factually incorrect for the quiz.
+
+HTML Bugs:
+<div id="timer"> Outside Body Container
+The timer div is outside the main div#quiz-container and placed after the script tag and closing body tag, which is invalid HTML structure.
+
+Multiple onclick Attributes Without Event Listeners
+The use of onclick inline attributes for buttons is generally discouraged and error-prone if JS files are loaded asynchronously or fail.
+
+CSS Bugs:
+Invalid Color Codes (Missing #)
+In the CSS colors:
+
+background-color: 83B4FF; should be #83B4FF.
+background-color: FFE6E6; should be #FFE6E6.
+No Styling for Timer The timer div has no CSS rules, so it may be misplaced or invisible depending on background.
+
+#pagination-controls Margin Too Large
+Margin-top is set to 50px, which might push the buttons too far down unnecessarily.
