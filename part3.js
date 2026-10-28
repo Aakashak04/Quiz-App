@@ -151,7 +151,7 @@ function submitQuiz() {
         } else if (q.type === 'checkbox') {
             const inputs = document.querySelectorAll(`input[name="${inputName}"]:checked`);
             const selectedValues = Array.from(inputs).map(input => input.value);
-            if (JSON.stringify(selectedValues.sort()) === JSON.stringify(q.answer.sort())) {
+            if (JSON.stringify(selectedValues.sort()) === JSON.stringify(q.answer.sort().filter(x => q.options.includes(x)))) {
                 score++;
             }
         } else if (q.type === 'dropdown') {
